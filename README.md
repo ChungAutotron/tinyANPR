@@ -28,6 +28,21 @@ training):
 
 Runs in a few milliseconds per plate on a normal CPU - no GPU required.
 
+### Performance
+
+Native C/C++ engine, no GPU needed - fast enough for **real-time camera
+streams**, not just batch processing of stored images:
+
+- **~32 ms** per plate for the full pipeline (detect + read text + read
+  color), single-threaded on an ordinary CPU - **~31 fps**, comfortably
+  above the frame rate of most surveillance cameras (typically 15-25 fps).
+- Scales further with multiple threads/cameras: detection kernels are
+  runtime-dispatched to the best available CPU instruction set (SSE2 up to
+  AVX2), so the same binary runs safely and efficiently across a wide range
+  of hardware.
+- No PyTorch/ONNX Runtime dependency at runtime - smaller footprint, faster
+  cold start, easier to deploy on edge/embedded PCs.
+
 ### Repository layout
 
 ```
@@ -53,10 +68,10 @@ No license required - this runs in trial mode (2 hours of use per rolling
 24-hour window). See `sdk/example_python.py` for the full integration
 sequence (activate/trial_start -> load model -> detect -> read plate).
 
-### Getting the full SDK + a free 1-year license
+### Getting the full SDK + a license
 
 The trial mode above is time-limited. For an unrestricted evaluation license
-(1 year, free) and the full model package, contact:
+and the full model package, contact:
 
 **toanchungk57m.uet@gmail.com**
 
@@ -84,6 +99,20 @@ PyTorch/ONNX Runtime lúc chạy), có sẵn binding cho Python và C#.
 
 Chạy trong vài mili-giây/biển số trên CPU thường - không cần GPU.
 
+### Tốc độ xử lý
+
+Engine thuần C/C++, không cần GPU - đủ nhanh để **chạy real-time trên
+camera trực tiếp**, không chỉ xử lý theo lô ảnh có sẵn:
+
+- **~32 ms** cho toàn bộ pipeline mỗi biển số (phát hiện + đọc chữ + đọc
+  màu), đơn luồng trên CPU thường - tương đương **~31 fps**, vượt xa nhịp
+  khung hình của hầu hết camera giám sát (thường 15-25 fps).
+- Tận dụng thêm được khi chạy đa luồng/nhiều camera: các kernel nhận diện
+  tự chọn tập lệnh CPU phù hợp nhất lúc chạy (từ SSE2 đến AVX2), nên cùng
+  một bản build chạy an toàn và hiệu quả trên nhiều loại phần cứng khác nhau.
+- Không phụ thuộc PyTorch/ONNX Runtime lúc chạy - gọn nhẹ hơn, khởi động
+  nhanh hơn, dễ triển khai trên máy tính nhúng/edge.
+
 ### Cấu trúc thư mục
 
 ```
@@ -109,9 +138,9 @@ Không cần license - chạy ở chế độ dùng thử (2 giờ mỗi 24 gi�
 `sdk/example_python.py` để biết trình tự tích hợp đầy đủ (activate/
 trial_start -> nạp model -> detect -> đọc biển).
 
-### Nhận bộ SDK đầy đủ + license miễn phí 1 năm
+### Nhận bộ SDK đầy đủ + license
 
 Chế độ dùng thử ở trên bị giới hạn thời gian. Muốn nhận license đánh giá
-không giới hạn (1 năm, miễn phí) cùng gói model đầy đủ, liên hệ:
+không giới hạn cùng gói model đầy đủ, liên hệ:
 
 **toanchungk57m.uet@gmail.com**
