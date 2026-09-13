@@ -43,6 +43,15 @@ streams**, not just batch processing of stored images:
 - No PyTorch/ONNX Runtime dependency at runtime - smaller footprint, faster
   cold start, easier to deploy on edge/embedded PCs.
 
+### vs. SimpleLPR
+
+Measured on the same internal Vietnamese-plate validation set:
+
+| | TinyANPR | SimpleLPR |
+|---|---|---|
+| Exact match (full plate text correct) | **85.9%** | 73.7% |
+| Relative speed | **~5.7x faster** | 1x |
+
 ### Repository layout
 
 ```
@@ -112,6 +121,15 @@ camera trực tiếp**, không chỉ xử lý theo lô ảnh có sẵn:
   một bản build chạy an toàn và hiệu quả trên nhiều loại phần cứng khác nhau.
 - Không phụ thuộc PyTorch/ONNX Runtime lúc chạy - gọn nhẹ hơn, khởi động
   nhanh hơn, dễ triển khai trên máy tính nhúng/edge.
+
+### So với SimpleLPR
+
+Đo trên cùng tập validation biển số Việt Nam nội bộ:
+
+| | TinyANPR | SimpleLPR |
+|---|---|---|
+| Đọc đúng toàn bộ ký tự | **85.9%** | 73.7% |
+| Tốc độ tương đối | **nhanh hơn ~5.7 lần** | 1x |
 
 ### Cấu trúc thư mục
 
